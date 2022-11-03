@@ -1,0 +1,19 @@
+{
+  "name": "emz/plugin-faq",
+  "description": "A FAQ Plugin for 8mylez",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "EmzFAQ\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "EmzFAQ\\EmzFAQ",
+    "label": {
+      "de-DE": "Q&A Plugin",
+      "en-GB": "FAQ plugin"
+    }
+  },
+  "version": "0.0.1"
+}
