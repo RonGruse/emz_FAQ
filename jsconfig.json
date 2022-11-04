@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "target": "es6",
+        "checkJs": true,
+        "allowUmdGlobalAccess": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "moduleResolution": "Node",
+        "paths": {
+            "vue$": [
+                "../../../platform/src/Administration/Resources/app/administration/node_modules/vue/dist/vue.esm.js"
+            ],
+            "src/*": [
+                "../../../platform/src/Administration/Resources/app/administration/src/*"
+            ],
+            "module/*": [
+                "../../../platform/src/Administration/Resources/app/administration/src/module/*"
+            ],
+            "scss/*": [
+                "../../../platform/src/Administration/Resources/app/administration/src/app/assets/scss/*"
+            ],
+            "assets/*": [
+                "../../../platform/src/Administration/Resources/app/administration/static/*"
+            ],
+            "Shopware": [
+                "../../../platform/src/Administration/Resources/app/administration/src/core/shopware"
+            ],
+        }
+    },
+    "include": [
+        "src/**/*",
+        "types/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "test/**/*",
+        "**/fixtures/*.js"
+    ]
+}
