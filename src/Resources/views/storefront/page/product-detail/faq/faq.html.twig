@@ -1,0 +1,6 @@
+{% block page_product_detail_faq_container %}
+    {% for faq in faqs.elements %}
+        <h5>{{ faq.question }}</h5>
+        <p>{{ faq.answer }}</p>
+    {% endfor %}
+{% endblock %}

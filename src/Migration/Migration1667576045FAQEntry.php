@@ -36,5 +36,10 @@ SQL;
 
     public function updateDestructive(Connection $connection): void
     {
+        $sql = <<<SQL
+        DROP TABLE `emz_faq_entry`;
+        SQL;
+
+        $connection->executeStatement($sql);
     }
 }
