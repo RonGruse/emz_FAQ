@@ -1,0 +1,15 @@
+{
+    "emz": {
+        "faq": {
+            "detail": {
+                "buttonSave": "Speichern"
+            },
+            "list": {
+                "buttonAddFaq": "FAQ hinzufügen"
+            },
+            "menu": {
+                "faq": "FAQ"
+            }
+        }
+    }
+}

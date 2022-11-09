@@ -1,0 +1,38 @@
+{% block emz_faq_list %}
+<sw-page class="emz-faq-list">
+    {% block emz_faq_list_search_bar %}
+    <template #search-bar>
+        <sw-search-bar initial-search-type="product" />
+    </template>
+    {% endblock %}
+
+    {% block emz_faq_list_smart_bar_actions %}
+    <template #smart-bar-actions>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block emz_faq_list_smart_bar_actions_add %}
+        <sw-button
+            v-tooltip="{
+                message: $tc('sw-privileges.tooltip.warning'),
+                showOnDisabledElements: true
+            }"
+            :router-link="{ name: 'emz.faq.create' }"
+            variant="primary"
+        >
+            {{ $tc('emz.faq.list.buttonAddFaq') }}
+        </sw-button>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    <template #content>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block emz_faq_list_content %}
+        <div class="emz_faq-list__content">
+            <sw-entity-listing :repository="faqRepository" detail-route="emz.faq.detail" :columns="faqColumns" :items="faqs">
+
+            </sw-entity-listing>
+        </div>
+    </template>
+    {% endblock %}
+</sw-page>
+{% endblock emz_faq_list %}

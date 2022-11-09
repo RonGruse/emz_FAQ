@@ -1,0 +1,31 @@
+{% block emz_faq_detail %}
+<sw-page>
+    {% block emz_faq_smart_bar_action %}
+    <template #smart-bar-actions>
+        {% block sw_product_detail_actions_save %}
+        <sw-button-process class="emz-faq-detail__save-action" :is-loading="isLoading"
+            :process-success="isSaveSuccessful" variant="primary" :disabled="isLoading"
+            @click.prevent="onSave">
+            {{ $tc('emz.faq.detail.buttonSave') }}
+        </sw-button-process>
+        {% endblock %}
+    </template>
+    {% endblock emz_faq_smart_bar_action %}
+    <template #content>
+        {% block emz_faq_detail_content %}
+        <sw-card-view>
+            <sw-card class="emz-faq-detail__content" v-if="faq" title="FAQ">
+                <sw-text-field :copyable="false" :copyableTooltip="false" placeholder="Question" v-model="faq.question">
+                </sw-text-field>
+                <sw-text-editor value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr" :is-inline-edit="false"
+                    v-model="faq.answer" placeholder="Answer" />
+                {# It would be nicer to use sw-modal for the selection with sw-entity-listing to show more information
+                on the product other than the name #}
+                <sw-entity-single-select v-model="faq.productId" entity="product"
+                    class="sw-order-create-details-footer__item" show-clearable-button />
+            </sw-card>
+        </sw-card-view>
+        {% endblock %}
+    </template>
+</sw-page>
+{% endblock emz_faq_detail %}
