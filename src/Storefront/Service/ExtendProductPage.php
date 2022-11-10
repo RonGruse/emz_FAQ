@@ -1,10 +1,13 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace EmzFAQ\Service\Storefront;
+declare(strict_types=1);
+
+namespace EmzFAQ\Storefront\Service;
 
 use EmzFAQ\Core\Content\FAQ\FAQEntryRoute;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\NotFilter;
 use Shopware\Storefront\Page\Product\ProductPageLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -28,6 +31,7 @@ class ExtendProductPage implements EventSubscriberInterface
     {
         $criteria = new Criteria();
         $criteria->addFilter(new EqualsFilter('productId', $event->getPage()->getProduct()->getId()));
+        $criteria->addFilter(new NotFilter(NotFilter::CONNECTION_OR, [new EqualsFilter('answer', null)]));
         $faqResponse = $this->faqEntryRoute->load($criteria, $event->getSalesChannelContext());
 
         $event->getPage()->addExtension('faq', $faqResponse->getFAQEntries());

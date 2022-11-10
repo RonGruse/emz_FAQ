@@ -1,6 +1,24 @@
 {% block page_product_detail_faq_container %}
+<div class="js-faq-container">
     {% for faq in faqs.elements %}
-        <h5>{{ faq.question }}</h5>
-        <p>{{ faq.answer }}</p>
+    <h5>{{ faq.question }}</h5>
+    <p>{{ faq.answer }}</p>
     {% endfor %}
+
+    {% set formAjaxSubmitOptions = {
+        replaceSelectors: '.js-faq-container'
+    } %}
+
+    <h5>Ask a question</h5>
+    <form class="review-form" action="{{ path('frontend.detail.faq.save', { productId: page.product.id }) }}"
+        method="post" data-form-validation="true" data-form-ajax-submit="true"
+        data-form-ajax-submit-options='{{ formAjaxSubmitOptions|json_encode }}'>
+
+        {% block component_review_form_csrf %}
+        {{ sw_csrf('frontend.detail.faq.save') }}
+        {% endblock %}
+        <input type="text" name="question" id="question">
+        <button type="submit" class="btn btn-primary btn-review-submit">Send</button>
+    </form>
+</div>
 {% endblock %}
